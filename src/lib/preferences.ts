@@ -140,3 +140,10 @@ export const {
   StoreProvider: PreferencesProvider,
   useStore: usePreferences
 } = createStoreContext(usePreferencesStore, 'preferences')
+
+export function useFirstUser() {
+  const { preferences } = usePreferences()
+  return useMemo(() => {
+    return preferences['general.accounts'][0]
+  }, [preferences])
+}
